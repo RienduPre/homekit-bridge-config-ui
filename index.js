@@ -39,7 +39,7 @@ module.exports = function (service) {
     Service = service.hap.Service;
     Characteristic = service.hap.Characteristic;
 
-    service.registerPlatform("homebridge-config-ui", "config", HttpServer);
+    service.registerPlatform("homekit-bridge-config-ui", "config", HttpServer);
 }
 
 function HttpServer(log, config) {
