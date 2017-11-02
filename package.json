@@ -1,0 +1,95 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "RienduPre/homebridge-config-ui",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "RienduPre/homebridge-config-ui",
+        "spec": "github:riendupre/homebridge-config-ui",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:riendupre/homebridge-config-ui.git",
+          "sshUrl": "git+ssh://git@github.com/riendupre/homebridge-config-ui.git",
+          "httpsUrl": "git+https://github.com/riendupre/homebridge-config-ui.git",
+          "gitUrl": "git://github.com/riendupre/homebridge-config-ui.git",
+          "shortcut": "github:riendupre/homebridge-config-ui",
+          "directUrl": "https://raw.githubusercontent.com/riendupre/homebridge-config-ui/master/package.json"
+        }
+      },
+      "/home/pi"
+    ]
+  ],
+  "_from": "riendupre/homebridge-config-ui",
+  "_id": "homebridge-config-ui@1.1.4",
+  "_inCache": true,
+  "_location": "/homebridge-config-ui",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "RienduPre/homebridge-config-ui",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "RienduPre/homebridge-config-ui",
+    "spec": "github:riendupre/homebridge-config-ui",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:riendupre/homebridge-config-ui.git",
+      "sshUrl": "git+ssh://git@github.com/riendupre/homebridge-config-ui.git",
+      "httpsUrl": "git+https://github.com/riendupre/homebridge-config-ui.git",
+      "gitUrl": "git://github.com/riendupre/homebridge-config-ui.git",
+      "shortcut": "github:riendupre/homebridge-config-ui",
+      "directUrl": "https://raw.githubusercontent.com/riendupre/homebridge-config-ui/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "git://github.com/riendupre/homebridge-config-ui.git#81642a64f0fafa32f489a5c0c385ca3d33348d82",
+  "_shasum": "84af3a5ef7c328a3bc4b41a7329909147aeb875b",
+  "_shrinkwrap": null,
+  "_spec": "RienduPre/homebridge-config-ui",
+  "_where": "/home/pi",
+  "bugs": {
+    "url": "https://github.com/mkellsy/homebridge-config-ui/issues"
+  },
+  "dependencies": {
+    "async": "~2.5.0",
+    "body-parser": "~1.17.1",
+    "chalk": "~1.1.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "express-session": "~1.15.3",
+    "hogan-express": "~0.5.2",
+    "passport": "~0.3.2",
+    "passport-local": "~1.0.0",
+    "read-last-lines": "~1.2.0",
+    "request": "~2.81.0",
+    "serve-favicon": "~2.4.2"
+  },
+  "description": "Configuration UI plugin for Homebridge",
+  "devDependencies": {},
+  "engines": {
+    "homebridge": ">=0.2.0",
+    "node": ">=0.12.0"
+  },
+  "gitHead": "81642a64f0fafa32f489a5c0c385ca3d33348d82",
+  "homepage": "https://github.com/mkellsy/homebridge-config-ui#readme",
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "license": "MIT",
+  "name": "homebridge-config-ui",
+  "optionalDependencies": {},
+  "readme": "# Homebridge Config UI\n\nThis is a plugin for [Homebridge](https://github.com/nfarina/homebridge)\n\nThis plugin allows you to monitor, backup and configure your Homebridge server from a browser.\n\n![Status](status.png)\n\n# Installation Instructions\n\nFirst install the plugin\n```Bash\nsudo npm i -g homebridge-config-ui\n```\n\n### For Supervisord\n\nAdd this to your ~/.homebridge/config.json file\n```JSON\n{\n    \"platform\": \"config\",\n    \"name\": \"Config\",\n    \"port\": 8080,\n    \"log\": \"/var/log/homebridge.stdout.log\",\n    \"error_log\": \"/var/log/homebridge.stderr.log\",\n    \"restart\": \"/usr/local/bin/supervisorctl restart homebridge\",\n    \"temp\": \"/sys/class/thermal/thermal_zone0/temp\"\n}\n```\n\nThis example uses [supervisor](http://supervisord.org/) to control homebridge. This is a good supervisor how to: [Running Supervisor on OSX](https://nicksergeant.com/running-supervisor-on-os-x/)\n\nReplace <b>/var/log/homebridge.stdout.log</b> with the path to your Homebridge output log.<br />\nReplace <b>/var/log/homebridge.stderr.log</b> with the path to your Homebridge error log.<br />\nReplace <b>/usr/local/bin/supervisorctl restart homebridge</b> with the command you use to restart Homebridge.<br />\nReplace <b>/sys/class/thermal/thermal_zone0/temp</b> with the command you use to check the CPU Temperature.\n\n### For Systemd\n\nAdd this to your /var/homebridge/config.json file\n```JSON\n{\n    \"platform\": \"config\",\n    \"name\": \"Config\",\n    \"port\": 8080,\n    \"log\": \"/var/log/daemon.log\",\n    \"restart\": \"sudo systemctl restart homebridge.service\",\n    \"temp\" : \"/sys/class/thermal/thermal_zone0/temp\"\n}\n```\n\nReplace <b>/var/log/daemon.log</b> with the path to your Homebridge output log.<br />\nReplace <b>sudo systemctl restart homebridge.service</b> with the command you use to restart Homebridge.<br />\nReplace <b>/sys/class/thermal/thermal_zone0/temp</b> with the command you use to check the CPU Temperature.\n\n# Initial Run\n\nOnce installed you can open the interface at http://localhost:8080. The default username is <b>admin</b> and the default password is <b>admin</b>.\n\n# Usage\n\nLogin Screen\n\nMost of your platform configs have usernames and passwords in them. To keep these seceret, this plugin has basic authentication. The users are stored in the ~/.homebridge/auth.json file.\n\n![Login](login.png)\n\nStatus Screen\n\nThis shows you that the services are running. It also has your HomeKit pin.\n\n![Status](status.png)\n\nLog Screen\n\nThis shows you the rolling log. This is helpful for troubleshooting.\n\n![Log](log.png)\n\nConfiguration Screen\n\nAnd finally the configuration screen allows you to modify your Homebridge settings and your platforms and accessories.\n\n![Config](config.png)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mkellsy/homebridge-config-ui.git"
+  },
+  "version": "1.1.4"
+}
